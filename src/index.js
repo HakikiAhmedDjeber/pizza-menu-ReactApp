@@ -51,11 +51,45 @@ const pizzaData = [
 function App() {
   return (
     <div>
-      <h1>weee REACT</h1>
+      <Header />
+      <Menu />
+      <Footer />
+    </div>
+  );
+}
+function Header() {
+  return <h1>Fast React Pizza Co.</h1>;
+}
+function Menu() {
+  return (
+    <div>
+      <h2>Our menu</h2>
+      <Pizza />
+      <Pizza />
+      <Pizza />
+      <Pizza />
       <Pizza />
       <Pizza />
     </div>
   );
+}
+function Footer() {
+  const hour = new Date().getHours();
+  console.log(hour);
+  const openHour = 11;
+  const closeHour = 22;
+  let status;
+  if (hour >= openHour && hour < closeHour) {
+    status = "open";
+  } else {
+    status = "close";
+  }
+  return (
+    <footer>
+      {new Date().toLocaleDateString()} we're currently {status}!
+    </footer>
+  );
+  // return React.createElement("footer", null, "we're currently open!");
 }
 function Pizza() {
   return (
