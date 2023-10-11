@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 // React before v18
 // import ReactDOM from "react-dom";
 
@@ -50,7 +51,7 @@ const pizzaData = [
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -58,18 +59,40 @@ function App() {
   );
 }
 function Header() {
-  return <h1>Fast React Pizza Co.</h1>;
+  return (
+    <header className="header">
+      <h1>Fast React Pizza Co.</h1>
+    </header>
+  );
 }
 function Menu() {
   return (
-    <div>
+    <div className="menu">
       <h2>Our menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <Pizza
+        name="Pizza Spinaci"
+        photoLink="pizzas/spinaci.jpg"
+        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+        price={10}
+      />
+      <Pizza
+        name="Pizza funghi"
+        photoLink="pizzas/funghi.jpg"
+        ingredients="Tomato, mozarella"
+        price={12}
+      />
+    </div>
+  );
+}
+function Pizza(props) {
+  return (
+    <div className="pizza">
+      <img src={props.photoLink} alt={props.name} />
+      <div>
+        <h1>{props.name}</h1>
+        <p>{props.ingredients}</p>
+        <span>{props.price}</span>
+      </div>
     </div>
   );
 }
@@ -85,20 +108,11 @@ function Footer() {
     status = "close";
   }
   return (
-    <footer>
+    <footer className="footer">
       {new Date().toLocaleDateString()} we're currently {status}!
     </footer>
   );
   // return React.createElement("footer", null, "we're currently open!");
-}
-function Pizza() {
-  return (
-    <div>
-      <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci" />
-      <h1>Pizza Spinaci</h1>
-      <p>Tomato, mozarella, spinach, and ricotta cheese</p>
-    </div>
-  );
 }
 // React v18
 const root = ReactDOM.createRoot(document.getElementById("root"));
