@@ -71,12 +71,14 @@ function Menu() {
   return (
     <div className="menu">
       <h2>Our menu</h2>
-      {numpizza > 0 && (
+      {numpizza > 0 ? (
         <ul className="pizzas">
           {pizzas.map((pizza) => (
             <Pizza pizzaObj={pizza} key={pizza.name} />
           ))}
         </ul>
+      ) : (
+        <p>we're still working on our menu please come back late :)</p>
       )}
 
       {/* <Pizza
@@ -122,7 +124,7 @@ function Footer() {
     <footer className="footer">
       {isOpen && (
         <div className="order">
-          <p>we'r Open until {closeHour}:00. Come vists us or order online</p>
+          <p>we're Open until {closeHour}:00. Come vists us or order online</p>
           <button className="btn">Order</button>
         </div>
       )}
